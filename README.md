@@ -15,9 +15,11 @@ optional arguments:
   -h, --help  show this help message and exit
 ```
 
-`bin2c.py img.png my_img 80 4`  
+#### Example:
+
+`./bin2c.py img.png my_img 80 4`  
 or simply  
-`bin2c.py img.png my_img`
+`./bin2c.py img.png my_img`
 
 This will print out to console a C array with variable name `my_img` limited to `80` characters per line, with `4` spaces indent:
 
