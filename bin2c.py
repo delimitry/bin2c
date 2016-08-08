@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- coding: utf8 -*-
+#-*- coding: utf-8 -*-
 """
     bin2c
     ~~~~~
@@ -13,6 +13,9 @@
 import argparse
 import os
 import re
+import sys
+
+PY3 = sys.version_info[0] == 3
 
 
 def bin2c(filename, varname='data', linesize=80, indent=4):
@@ -38,7 +41,7 @@ def bin2c(filename, varname='data', linesize=80, indent=4):
     out = 'const char %s[%d] = {\n' % (varname, len(data))
     line = ''
     for byte in data:
-        line += '0x%02x, ' % ord(byte)
+        line += '0x%02x, ' % (byte if PY3 else ord(byte))
         if len(line) + indent + byte_len >= linesize:
             out += ' ' * indent + line + '\n'
             line = ''
